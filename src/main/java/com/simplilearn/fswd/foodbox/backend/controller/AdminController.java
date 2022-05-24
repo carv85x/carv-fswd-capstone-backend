@@ -1,7 +1,5 @@
 package com.simplilearn.fswd.foodbox.backend.controller;
 
-import java.util.List;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -18,7 +16,6 @@ import com.google.gson.Gson;
 import com.simplilearn.fswd.foodbox.backend.model.Admin;
 import com.simplilearn.fswd.foodbox.backend.model.Login;
 import com.simplilearn.fswd.foodbox.backend.model.Message;
-import com.simplilearn.fswd.foodbox.backend.model.User;
 import com.simplilearn.fswd.foodbox.backend.service.AdminService;
 
 @RestController
