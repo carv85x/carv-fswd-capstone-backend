@@ -1,5 +1,7 @@
 package com.simplilearn.fswd.foodbox.backend.controller;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -13,20 +15,21 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.google.gson.Gson;
+import com.simplilearn.fswd.foodbox.backend.model.Admin;
 import com.simplilearn.fswd.foodbox.backend.model.Login;
 import com.simplilearn.fswd.foodbox.backend.model.Message;
 import com.simplilearn.fswd.foodbox.backend.model.User;
-import com.simplilearn.fswd.foodbox.backend.service.UserService;
+import com.simplilearn.fswd.foodbox.backend.service.AdminService;
 
 @RestController
-@RequestMapping("/user")
-public class UserController {
+@RequestMapping("/admin")
+public class AdminController{
 	
 	@Autowired
-	UserService service;
-	
-	@PostMapping("/user")
-	public ResponseEntity<?> createUser(@RequestBody User user) {
+	AdminService service;
+
+	@PostMapping("/admin")
+	public ResponseEntity<?> createAdmin(@RequestBody Admin user) {
 		
 		service.createUser(user);
 		
@@ -40,8 +43,8 @@ public class UserController {
 				);		
 	}
 	
-	@PutMapping("/user/{id}")
-	public ResponseEntity<?> updateUser(@RequestBody User user) {
+	@PutMapping("/admin/{id}")
+	public ResponseEntity<?> updateAdmin(@RequestBody Admin user) {
 		
 		service.updateUser(user);
 		
@@ -55,10 +58,10 @@ public class UserController {
 				);		
 	}
 	
-	@DeleteMapping("/user/{id}")
+	@DeleteMapping("/admin/{id}")
 	public ResponseEntity<?> deleteUser(@PathVariable int id) {
 		
-		User user = new User();
+		Admin user = new Admin();
 		user.setId(id);
 		service.deleteUser(user);
 		
@@ -72,10 +75,10 @@ public class UserController {
 				);			
 	}
 	
-	@GetMapping("/user/{id}")
+	@GetMapping("/admin/{id}")
 	public ResponseEntity<?> getUser(@PathVariable int id) {
 		
-		User user = new User();
+		Admin user = new Admin();
 		user.setId(id);
 		user = service.getUser(user);
 		
@@ -89,10 +92,10 @@ public class UserController {
 				);			
 	}
 	
-	@GetMapping("/user/username/{username}")
+	@GetMapping("/admin/username/{username}")
 	public ResponseEntity<?> getUserByUsername(@PathVariable String username) {
 		
-		User user = service.findByUsername(username).get(0);
+		Admin user = service.findByUsername(username).get(0);
 		
 		return new ResponseEntity<> (
 				new Message(
@@ -104,10 +107,10 @@ public class UserController {
 				);			
 	}
 	
-	@GetMapping("/user/login/{username}")
+	@GetMapping("/admin/login/{username}")
 	public ResponseEntity<?> getUserByUsernameAndPassword(@RequestBody Login login) {
 		
-		User user = service.findByUsernameAndPassword(login.getUsername(), login.getPassword()).get(0);
+		Admin user = service.findByUsernameAndPassword(login.getUsername(), login.getPassword()).get(0);
 		
 		return new ResponseEntity<> (
 				new Message(
