@@ -12,14 +12,14 @@ import lombok.Setter;
 @Getter
 @Setter
 public class Message {
-	
+
 	@JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "dd-MM-yyyy hh:mm:ss")
 	private Date time;
 	private int code;
 	private String status;
 	private String message;
 	private String details;
-	
+
 	public Message() {
 		time = new Date();
 	}
@@ -31,6 +31,5 @@ public class Message {
 		this.message = message;
 		this.details = details;
 	}
-	
-	
+
 }
