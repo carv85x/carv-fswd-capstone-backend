@@ -44,6 +44,9 @@ public class Item {
 	private int discount;
 	
 	@NotBlank
+	private String img;
+	
+	@NotBlank
 	@ManyToMany(mappedBy = "likedCourses")
 	private Set<Order> orders;
 	
