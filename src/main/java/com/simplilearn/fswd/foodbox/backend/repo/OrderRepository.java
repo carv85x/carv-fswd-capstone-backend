@@ -9,8 +9,8 @@ import com.simplilearn.fswd.foodbox.backend.model.OrderStatus;
 
 public interface OrderRepository extends JpaRepository<Order, Integer>{
 	
-	public List<Order> findByOrderNoByOrderAsc(String orderNo);
-	public List<Order> findByOrder_User_Name(String username);
+	public List<Order> findByOrderNoOrderByOrderNoAsc(String orderNo);
+	public List<Order> findByUser_NameOrderByOrderNoAsc(String username);
 	
 	default List<Order> findAllWhereOrderStateIsPurchased() {
         return findByStatus(OrderStatus.PURCHASED);

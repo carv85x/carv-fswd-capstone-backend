@@ -45,7 +45,7 @@ public class AdminController {
 	public ResponseEntity<?> deleteUser(@PathVariable int id) {
 
 		Admin user = new Admin();
-		user.setId(id);
+		user.setIdAdmin(id);
 		service.deleteUser(user);
 
 		return new ResponseEntity<>(new Message(HttpStatus.OK, "User Deleted", new Gson().toJson(user)), HttpStatus.OK);
@@ -55,7 +55,7 @@ public class AdminController {
 	public ResponseEntity<?> getUser(@PathVariable int id) {
 
 		Admin user = new Admin();
-		user.setId(id);
+		user.setIdAdmin(id);
 		user = service.getUser(user);
 
 		return new ResponseEntity<>(new Message(HttpStatus.OK, "User Fetched", new Gson().toJson(user)), HttpStatus.OK);

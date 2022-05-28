@@ -23,7 +23,7 @@ public class OrderServiceImpl implements OrderService {
 
 	@Override
 	public Order getOrder(Order order) {		
-		return repo.getById(order.getId());
+		return repo.getById(order.getIdOrder());
 	}
 
 	@Override
@@ -34,17 +34,17 @@ public class OrderServiceImpl implements OrderService {
 
 	@Override
 	public void deleteOrder(Order order) {
-		repo.deleteById(order.getId());		
+		repo.deleteById(order.getIdOrder());		
 	}
 
 	@Override
 	public List<Order> findByOrderNoByOrderAsc(String orderNo) {
-		return repo.findByOrderNoByOrderAsc(orderNo);
+		return repo.findByOrderNoOrderByOrderNoAsc(orderNo);
 	}
 
 	@Override
 	public List<Order> findByOrder_User_Name(String username) {
-		return repo.findByOrder_User_Name(username);
+		return repo.findByUser_NameOrderByOrderNoAsc(username);
 	}
 
 	@Override

@@ -44,7 +44,7 @@ public class ItemController {
 	public ResponseEntity<?> deleteItem(@PathVariable int id) {
 
 		Item item = new Item();
-		item.setId(id);
+		item.setIdItem(id);
 		service.deleteItem(item);
 
 		return new ResponseEntity<>(new Message(HttpStatus.OK, "Item Deleted", new Gson().toJson(item)), HttpStatus.OK);
@@ -54,7 +54,7 @@ public class ItemController {
 	public ResponseEntity<?> getItem(@PathVariable int id) {
 
 		Item item = new Item();
-		item.setId(id);
+		item.setIdItem(id);
 		item = service.getItem(item);
 
 		return new ResponseEntity<>(new Message(HttpStatus.OK, "Item Fetched", new Gson().toJson(item)), HttpStatus.OK);

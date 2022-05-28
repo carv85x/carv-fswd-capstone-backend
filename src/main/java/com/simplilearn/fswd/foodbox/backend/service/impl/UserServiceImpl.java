@@ -22,7 +22,7 @@ public class UserServiceImpl implements UserService {
 
 	@Override
 	public User getUser(User user) {
-		return repo.getById(user.getId());
+		return repo.getById(user.getIdUser());
 	}
 
 	@Override
@@ -33,7 +33,7 @@ public class UserServiceImpl implements UserService {
 
 	@Override
 	public void deleteUser(User user) {
-		repo.deleteById(user.getId());
+		repo.deleteById(user.getIdUser());
 
 	}
 	

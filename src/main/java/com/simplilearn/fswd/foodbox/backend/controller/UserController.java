@@ -45,7 +45,7 @@ public class UserController {
 	public ResponseEntity<?> deleteUser(@PathVariable int id) {
 
 		User user = new User();
-		user.setId(id);
+		user.setIdUser(id);
 		service.deleteUser(user);
 
 		return new ResponseEntity<>(new Message(HttpStatus.OK, "User Deleted", new Gson().toJson(user)), HttpStatus.OK);
@@ -55,7 +55,7 @@ public class UserController {
 	public ResponseEntity<?> getUser(@PathVariable int id) {
 
 		User user = new User();
-		user.setId(id);
+		user.setIdUser(id);
 		user = service.getUser(user);
 
 		return new ResponseEntity<>(new Message(HttpStatus.OK, "User Fetched", new Gson().toJson(user)), HttpStatus.OK);

@@ -5,6 +5,10 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 import javax.validation.constraints.NotBlank;
 
@@ -14,26 +18,30 @@ import lombok.Getter;
 import lombok.Setter;
 
 @Entity
-@Table(name = "ADMIN") 
+@Table(name = "ORDERITEM")
 @Getter
 @Setter
-public class Admin {
+public class OrderItem {
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	@Column(name = "admin_id")
-	private int idAdmin;
+	@Column(name = "orderitem_id")
+	private int idOrderItem;
 	
 	@NaturalId
-	private String username;
+	private String orderitemNo;
 	
 	@NotBlank
-	private String password;
+	@ManyToOne
+	@JoinColumn(name = "idOrder", nullable = false)
+	private Order order;
 	
 	@NotBlank
-	private String name;
+	@OneToOne
+	@JoinColumn(name = "idItem", nullable = false)
+	private Item item;
 	
 	@NotBlank
-	private String email;
+	private int qty;
 
 }

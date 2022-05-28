@@ -2,6 +2,7 @@ package com.simplilearn.fswd.foodbox.backend.model;
 
 import java.util.Set;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -23,7 +24,8 @@ public class User {
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private int id;
+	@Column(name = "user_id")
+	private int idUser;
 	
 	@NaturalId
 	private String username;
@@ -41,7 +43,7 @@ public class User {
 	private String address;
 	
 	@NotBlank
-    @OneToMany(mappedBy = "id")
+    @OneToMany(mappedBy = "user")
 	private Set<Order> orders;
     
 	

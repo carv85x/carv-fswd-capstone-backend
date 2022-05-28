@@ -2,6 +2,8 @@ package com.simplilearn.fswd.foodbox.backend.model;
 
 import java.util.Set;
 
+import javax.persistence.Column;
+import javax.persistence.ElementCollection;
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
@@ -12,7 +14,7 @@ import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
-
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.validation.constraints.NotBlank;
 
@@ -22,27 +24,27 @@ import lombok.Getter;
 import lombok.Setter;
 
 @Entity
-@Table(name = "ORDER")
+@Table(name = "ORDERS")
 @Getter
 @Setter
 public class Order {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private int id;
+	@Column(name = "order_id")
+	private int idOrder;
 
 	@NaturalId
 	private String orderNo;
 
 	@NotBlank
 	@ManyToOne
-	@JoinColumn(name = "id", nullable = false)
+	@JoinColumn(name = "userId", nullable = false)
 	private User user;
 
 	@NotBlank
-	@ManyToMany
-	@JoinTable(name = "ITEM", joinColumns = @JoinColumn(name = "id"), inverseJoinColumns = @JoinColumn(name = "id"))
-	private Set<Item> items;
+	@OneToMany(mappedBy = "idOrderItem")	
+	private Set<OrderItem> items;
 
 	@NotBlank
 	@Enumerated(EnumType.STRING)

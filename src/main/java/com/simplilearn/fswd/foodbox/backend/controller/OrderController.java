@@ -46,7 +46,7 @@ public class OrderController {
 	public ResponseEntity<?> deleteOrder(@PathVariable int id) {
 
 		Order order = new Order();
-		order.setId(id);
+		order.setIdOrder(id);
 		service.deleteOrder(order);
 
 		return new ResponseEntity<>(new Message(HttpStatus.OK, "Order Deleted", new Gson().toJson(order)),
@@ -57,27 +57,27 @@ public class OrderController {
 	public ResponseEntity<?> getOrder(@PathVariable int id) {
 
 		Order order = new Order();
-		order.setId(id);
+		order.setIdOrder(id);
 		order = service.getOrder(order);
 
 		return new ResponseEntity<>(new Message(HttpStatus.OK, "Order Fetched", new Gson().toJson(order)), HttpStatus.OK);
 	}
 
-	@GetMapping("/orders")
+	@GetMapping("/orders/purchased")
 	public ResponseEntity<?> findAllWhereOrderStateIsPurchased() {
 		return new ResponseEntity<>(
 				new Message(HttpStatus.OK, "Orders Fetched", new Gson().toJson(service.findAllWhereOrderStateIsPurchased())),
 				HttpStatus.OK);
 	}
 	
-	@GetMapping("/orders")
+	@GetMapping("/orders/orderno/{orderno}")
 	public ResponseEntity<?> findByOrderNoByOrderAsc(@PathVariable String orderNo) {
 		return new ResponseEntity<>(
 				new Message(HttpStatus.OK, "Orders Fetched", new Gson().toJson(service.findByOrderNoByOrderAsc(orderNo))),
 				HttpStatus.OK);
 	}	
 	
-	@GetMapping("/orders")
+	@GetMapping("/orders/username/{username}")
 	public ResponseEntity<?> findByOrder_User_Name(@PathVariable String username) {
 		return new ResponseEntity<>(
 				new Message(HttpStatus.OK, "Orders Fetched", new Gson().toJson(service.findByOrder_User_Name(username))),

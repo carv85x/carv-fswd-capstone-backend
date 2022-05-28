@@ -22,7 +22,7 @@ public class ItemServiceImpl implements ItemService {
 
 	@Override
 	public Item getItem(Item item) {
-		return repo.getById(item.getId());
+		return repo.getById(item.getIdItem());
 	}
 
 	@Override
@@ -33,7 +33,7 @@ public class ItemServiceImpl implements ItemService {
 
 	@Override
 	public void deleteItem(Item item) {
-		repo.save(item);
+		repo.deleteById(item.getIdItem());
 
 	}
 
@@ -44,7 +44,7 @@ public class ItemServiceImpl implements ItemService {
 
 	@Override
 	public List<Item> findByCuisineByOrderByNameAsc(String cuisine) {
-		return repo.findByCuisineByOrderByNameAsc(cuisine);
+		return repo.findByCuisineOrderByNameAsc(cuisine);
 	}
 
 	@Override

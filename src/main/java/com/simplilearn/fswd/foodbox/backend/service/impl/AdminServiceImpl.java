@@ -23,7 +23,7 @@ public class AdminServiceImpl implements AdminService {
 
 	@Override
 	public Admin getUser(Admin user) {
-		return repo.getById(user.getId());
+		return repo.getById(user.getIdAdmin());
 	}
 
 	@Override
@@ -33,7 +33,7 @@ public class AdminServiceImpl implements AdminService {
 
 	@Override
 	public void deleteUser(Admin user) {
-		repo.deleteById(user.getId());
+		repo.deleteById(user.getIdAdmin());
 	}
 
 	@Override
